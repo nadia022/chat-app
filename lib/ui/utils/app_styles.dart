@@ -12,6 +12,8 @@ class AppStyles {
     color: AppColors.whiteColor,
     fontWeight: FontWeight.w400,
   );
+  static TextStyle title22BoldWhite = const TextStyle(
+      fontSize: 22, color: AppColors.whiteColor, fontWeight: FontWeight.bold);
   static TextStyle supHeading22DarkBlue = const TextStyle(
     fontSize: 22,
     color: AppColors.primaryColor,
