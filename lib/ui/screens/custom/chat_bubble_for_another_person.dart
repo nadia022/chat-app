@@ -2,16 +2,16 @@ import 'package:chat_app/ui/utils/app_colors.dart';
 import 'package:chat_app/ui/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
-class ChatBubble extends StatelessWidget {
+class ChatBuubleForAnotherPerdon extends StatelessWidget {
   String message;
-  ChatBubble({required this.message});
+  ChatBuubleForAnotherPerdon({required this.message});
 
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Align(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.centerRight,
       child: Container(
         constraints: BoxConstraints(
           maxWidth: width * 0.8,
@@ -25,7 +25,7 @@ class ChatBubble extends StatelessWidget {
                 topLeft: Radius.circular(20),
                 topRight: Radius.circular(20),
                 bottomRight: Radius.circular(20)),
-            color: AppColors.primaryColor),
+            color: AppColors.darkBlue),
         child: Text(
           message,
           style: AppStyles.label16White,

@@ -1,3 +1,4 @@
+import 'package:chat_app/cubits/chat_cubit/chat_cubit.dart';
 import 'package:chat_app/cubits/login_cubit/login_cubit.dart';
 import 'package:chat_app/ui/helper/dialog.dart';
 import 'package:chat_app/ui/screens/chat/chat_screen.dart';
@@ -20,6 +21,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+    var chatCubit = BlocProvider.of<ChatCubit>(context);
 
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
@@ -38,7 +40,9 @@ class LoginScreen extends StatelessWidget {
                 message: "Login Sucessfully",
                 posName: "ok",
                 posAction: () {
-                  Navigator.pushNamed(context, ChatScreen.routeName);
+                  chatCubit.getMessages();
+                  Navigator.pushNamed(context, ChatScreen.routeName,
+                      arguments: emailController.text);
                 });
           } else if (state is LoginFail) {
             DialogHelper.hideLoading(context);

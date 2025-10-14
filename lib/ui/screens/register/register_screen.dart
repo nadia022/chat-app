@@ -1,3 +1,4 @@
+import 'package:chat_app/cubits/chat_cubit/chat_cubit.dart';
 import 'package:chat_app/cubits/register_cubit/register_cubit.dart';
 import 'package:chat_app/ui/helper/dialog.dart';
 import 'package:chat_app/ui/screens/chat/chat_screen.dart';
@@ -21,6 +22,7 @@ class RegisterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+    var chatCubit = BlocProvider.of<ChatCubit>(context);
 
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
@@ -37,7 +39,9 @@ class RegisterScreen extends StatelessWidget {
                 message: "Registered Successfully",
                 posName: "ok",
                 posAction: () {
-                  Navigator.pushNamed(context, ChatScreen.routeName);
+                  chatCubit.getMessages();
+                  Navigator.pushNamed(context, ChatScreen.routeName,
+                      arguments: emailController.text);
                 });
           } else if (state is RegisterFail) {
             DialogHelper.hideLoading(context);
